@@ -4,6 +4,7 @@ const debug = require('debug')('embetty.web:server')
 const express = require('express')
 const fs = require('fs')
 const tweet = require('./tweet')
+const instagram = require('./instagram')
 const video = require('./video')
 
 const router = express.Router()
@@ -29,6 +30,7 @@ router.use('/embetty.js', (req, res, next) => {
   fs.createReadStream(embettyPath, {encoding: 'utf8'}).pipe(res)
 })
 router.use('/tweet', tweet)
+router.use('/instagram', instagram)
 router.use('/video', video)
 
 router.get('/version', (req, res) => {
