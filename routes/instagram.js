@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.param('id', async (req, res, next, id) => {
   try {
-    if (!/^\w+$/.test(id)) throw BadRequest
+    if (!/^[A-Za-z0-9_\-]+$/.test(id)) throw BadRequest
     req.instagram = await req.app.get('embetty').loadInstagramPost(id)
     next()
   } catch (e) {
